@@ -1,4 +1,4 @@
-const { SlashCommandBuilder, GuildMember } = require("discord.js");
+const { SlashCommandBuilder } = require("discord.js");
 const { useMasterPlayer } = require("discord-player");
 
 module.exports = {

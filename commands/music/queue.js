@@ -1,17 +1,15 @@
-const { GuildMember, SlashCommandBuilder } = require("discord.js");
+const { EmbedBuilder, SlashCommandBuilder } = require("discord.js");
+const { useQueue } = require("discord-player");
 
 module.exports = {
   data: new SlashCommandBuilder()
     .setName("queue")
-    .setDescription("Plays music in a voice channel.")
+    .setDescription("🎧 Shows the queue of the current playing song.")
     .setDMPermission(false),
 
-  async execute(interaction, player) {
-    if (
-      !(interaction.member instanceof GuildMember) ||
-      !interaction.member.voice.channel
-    ) {
-      return void interaction.reply({
+  async execute(interaction) {
+    if (!interaction.member?.voice?.channel) {
+      return await interaction.reply({
         content: "You are not in a voice channel!",
         ephemeral: true,
       });
@@ -22,29 +20,41 @@ module.exports = {
       interaction.member.voice.channelId !==
         interaction.guild.members.me.voice.channelId
     ) {
-      return void interaction.reply({
+      return await interaction.reply({
         content: "You are not in my voice channel!",
         ephemeral: true,
       });
     }
-    var queue = player.getQueue(interaction.guildId);
-    if (typeof queue != "undefined") {
-      trimString = (str, max) =>
-        str.length > max ? `${str.slice(0, max - 3)}...` : str;
-      return void interaction.reply({
-        embeds: [
-          {
-            title: "Now Playing",
-            description: trimString(
-              `The Current song playing is 🎶 | **${queue.current.title}**! \n 🎶 | ${queue}! `,
-              4095
-            ),
-          },
-        ],
-      });
+
+    const queue = useQueue(interaction.guildId);
+
+    if (queue) {
+      const tracks = queue.tracks.toArray();
+      const { currentTrack } = queue;
+
+      const embed = new EmbedBuilder()
+        .setTitle("Queue")
+        .setDescription(
+          tracks
+            .map(
+              (track, index) =>
+                `${index + 1}. **${track.title}** - ${track.duration}`
+            )
+            .join("\n")
+        )
+        .setFooter({
+          text: `Now playing: ${currentTrack.title} - ${currentTrack.duration}`,
+        })
+        .setColor("#87CEEB");
+      await interaction.reply({ embeds: [embed] });
     } else {
-      return void interaction.reply({
-        content: "There is no song in the queue!",
+      await interaction.reply({
+        embeds: [
+          new EmbedBuilder()
+            .setTitle("Queue")
+            .setDescription("There are no songs in the queue.")
+            .setColor("#87CEEB"),
+        ],
       });
     }
   },
