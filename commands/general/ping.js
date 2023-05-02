@@ -4,7 +4,7 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName("ping")
     .setDescription(
-      "Pong! Provides the websocket heartbeat and roundtrip latency of Edelweiss."
+      "Pong! Provides the websocket heartbeat and roundtrip latency of Canary."
     ),
   async execute(interaction) {
     const sent = await interaction.reply({
