@@ -4,11 +4,11 @@ const { useMasterPlayer } = require("discord-player");
 module.exports = {
   data: new SlashCommandBuilder()
     .setName("play")
-    .setDescription("Plays music in a voice channel.")
+    .setDescription("🎶 Stream high quality music in your voice channel.")
     .addStringOption((option) =>
       option
         .setName("song")
-        .setDescription("Title of the song to play.")
+        .setDescription("Title or URL of the song to play.")
         .setRequired(true)
     )
     .setDMPermission(false),
@@ -18,24 +18,22 @@ module.exports = {
     const player = useMasterPlayer();
     const channel = interaction.member?.voice?.channel;
 
-    if (!channel) {
+    if (!channel)
       return await interaction.reply({
-        content: "You are not in a voice channel!",
+        content: "❌ You are not in a voice channel!",
       });
-    }
 
-    // Check whether the user is in the same voice channel as the bot
     if (
       interaction.guild.members.me.voice.channelId &&
       interaction.member.voice.channelId !==
         interaction.guild.members.me.voice.channelId
-    ) {
+    )
       return await interaction.reply({
-        content: "You are not in the same voice channel as the bot.",
+        content: "❌ You are not in the same voice channel as Canary.",
         ephemeral: true,
       });
-    }
 
+    // Defer the reply to avoid "This interaction failed" error
     await interaction.deferReply();
 
     const query = interaction.options.getString("song", true);
@@ -44,7 +42,9 @@ module.exports = {
     });
 
     if (!searchResult.hasTracks())
-      return await interaction.followUp(`No results were found for ${query}!`);
+      return await interaction.followUp(
+        `❌ No results were found for ${query}!`
+      );
 
     try {
       await player.play(channel, searchResult, {
@@ -57,15 +57,15 @@ module.exports = {
         nodeOptions: {
           metadata: interaction.channel,
         },
-        leaveOnEnd: true,
         leaveOnEndCooldown: 10000,
-        leaveonEmpty: true,
         leaveonEmptyCooldown: 10000,
       });
 
-      await interaction.editReply(`Loading your track...`);
+      await interaction.followUp(
+        `🎶 Now playing **${searchResult.tracks[0].title}**!`
+      );
     } catch (error) {
-      return interaction.followUp(`Something wen wrong: ${error}`);
+      return interaction.followUp(`❌ Something went wrong: ${error}`);
     }
   },
 };

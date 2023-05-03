@@ -123,7 +123,7 @@ module.exports = {
       // Make sure the user who used the command is the one who can interact with the buttons
       if (i.user.id !== interaction.user.id)
         return await i.reply({
-          content: "You are not allowed to use this button!",
+          content: "❌ This is not your command!",
           ephemeral: true,
         });
 
