@@ -35,57 +35,90 @@ for (const folder of commandFolders) {
   }
 }
 
-// Create buttons to navigate through the pages
-const previousButton = new ButtonBuilder()
-  .setCustomId("previous")
-  .setLabel("Previous")
-  .setStyle(ButtonStyle.Secondary)
-  .setDisabled(true);
-const nextButton = new ButtonBuilder()
-  .setCustomId("next")
-  .setLabel("Next")
-  .setStyle(ButtonStyle.Primary);
+// Create the embed inside the function so it can be updated later
+async function createEmbed(key) {
+  return {
+    color: 0x87ceeb,
+    // add emoji to title with id of 1102992711566495896
+    title: "📝 Canary Commands",
+    description: "Here are all the commands you can use to get started! 🚀",
+    // Get the inner array of the specific category and map through each command
+    // Append the category name to the first field
+    fields: [
+      {
+        name: "\u200b",
+        value: `**${
+          // get the category name from the key and capitalize the first letter
+          commandFolders[key].charAt(0).toUpperCase() +
+          commandFolders[key].slice(1)
+        } Commands**`,
+      },
+      ...Object.values(commands)[key].map((command) => {
+        return {
+          name: `**/${command.name}**`,
+          value: command.description,
+        };
+      }),
+    ],
+    footer: {
+      // Format: "Page 1 of 3"
+      text: `Page ${key + 1} of ${Object.values(commands).length}`,
+    },
+    timestamp: new Date().toISOString(),
+  };
+}
 
 module.exports = {
   data: new SlashCommandBuilder()
     .setName("help")
     .setDescription(
-      "Learn more about the commands to get started with Canary!"
+      "🤔 Learn more about the commands to get started with Canary!"
     ),
   async execute(interaction) {
+    // Create a key to keep track of the page number
+    // Make a unique key for each interaction
     let key = 0;
 
-    // Combine the name and description of each command into a single string
-    // Format: **/command** - description
-    async function createEmbed(key) {
-      return {
-        color: 0x87ceeb,
-        title: "Commands",
-        description: "Here is a list of all the commands available to you.",
-        // Get the inner array of the specific category and map through each command
-        fields: Object.values(commands)[key].map((command) => {
-          return {
-            name: `**/${command.name}**`,
-            value: command.description,
-          };
-        }),
-      };
-    }
+    // Create buttons to navigate through the pages
+    const previousButton = new ButtonBuilder()
+      .setCustomId("previous")
+      .setLabel("Previous")
+      .setStyle(ButtonStyle.Secondary)
+      .setDisabled(true);
+    const firstButton = new ButtonBuilder()
+      .setCustomId("first")
+      .setLabel("First")
+      .setStyle(ButtonStyle.Secondary)
+      .setDisabled(true);
+    const nextButton = new ButtonBuilder()
+      .setCustomId("next")
+      .setLabel("Next")
+      .setStyle(ButtonStyle.Primary);
+    const lastButton = new ButtonBuilder()
+      .setCustomId("last")
+      .setLabel("Last")
+      .setStyle(ButtonStyle.Primary);
 
     // Add the buttons to the message
     const row = new ActionRowBuilder().addComponents(
+      firstButton,
       previousButton,
-      nextButton
+      nextButton,
+      lastButton
     );
 
     // Send the message with the buttons
     const response = await interaction.reply({
-      embeds: [await createEmbed(key)],
+      embeds: [await createEmbed(0)],
       components: [row],
     });
 
-    const collector = response.createMessageComponentCollector();
+    const collector = response.createMessageComponentCollector({
+      // Set the limit up to 30 seconds
+      time: 30000,
+    });
 
+    // Listen for button clicks
     collector.on("collect", async (i) => {
       // Make sure the user who used the command is the one who can interact with the buttons
       if (i.user.id !== interaction.user.id)
@@ -94,26 +127,40 @@ module.exports = {
           ephemeral: true,
         });
 
-      if (i.customId === "previous") {
-        key--;
-        if (key === 0) previousButton.setDisabled(true);
-        nextButton.setDisabled(false);
+      i.customId === "previous"
+        ? key--
+        : i.customId === "next"
+        ? key++
+        : i.customId === "first"
+        ? (key = 0)
+        : (key = Object.values(commands).length - 1);
 
-        i.update({
-          embeds: [await createEmbed(key)],
-          components: [row],
-        });
-      } else if (i.customId === "next") {
-        key++;
-        if (key === Object.values(commands).length - 1)
-          nextButton.setDisabled(true);
-        previousButton.setDisabled(false);
+      firstButton.setDisabled(key === 0 ? true : false);
+      previousButton.setDisabled(key === 0 ? true : false);
+      nextButton.setDisabled(
+        key === Object.values(commands).length - 1 ? true : false
+      );
+      lastButton.setDisabled(
+        key === Object.values(commands).length - 1 ? true : false
+      );
 
-        i.update({
-          embeds: [await createEmbed(key)],
-          components: [row],
-        });
-      }
+      i.update({
+        embeds: [await createEmbed(key)],
+        components: [row],
+      });
+    });
+
+    collector.on("end", async () => {
+      // If the collector ended because of the time limit, disable the buttons
+      firstButton.setDisabled(true);
+      previousButton.setDisabled(true);
+      nextButton.setDisabled(true);
+      lastButton.setDisabled(true);
+
+      await interaction.editReply({
+        embeds: [await createEmbed(key)],
+        components: [row],
+      });
     });
   },
 };
