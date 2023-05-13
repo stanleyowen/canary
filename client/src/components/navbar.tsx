@@ -17,6 +17,7 @@ import {
   Fab,
   Container,
   useScrollTrigger,
+  Tooltip,
 } from "@mui/material";
 import {
   Menu as MenuIcon,
@@ -52,7 +53,7 @@ function ScrollTop(props: Props) {
       <Box
         onClick={handleClick}
         role="presentation"
-        sx={{ position: "fixed", bottom: 16, right: 16, zIndex: 100 }}
+        sx={{ position: "fixed", bottom: 32, right: 32, zIndex: 100 }}
       >
         {children}
       </Box>
@@ -113,9 +114,7 @@ export default function NavigationBar(props: Props) {
           </Typography>
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
             {navItems.map((item) => (
-              <Button key={item} sx={{ color: "white" }}>
-                {item}
-              </Button>
+              <Button key={item}>{item}</Button>
             ))}
           </Box>
         </Toolbar>
@@ -131,7 +130,6 @@ export default function NavigationBar(props: Props) {
             open={mobileOpen}
             onClose={handleDrawerToggle}
             ModalProps={{ keepMounted: true }}
-            className="w-100"
             sx={{
               display: { xs: "block", sm: "none" },
               "& .MuiDrawer-paper": {
@@ -147,9 +145,11 @@ export default function NavigationBar(props: Props) {
       </Container>
 
       <ScrollTop {...props}>
-        <Fab size="small" aria-label="scroll back to top">
-          <KeyboardArrowUpIcon />
-        </Fab>
+        <Tooltip title="Scroll to top">
+          <Fab size="small" aria-label="scroll back to top">
+            <KeyboardArrowUpIcon />
+          </Fab>
+        </Tooltip>
       </ScrollTop>
     </React.Fragment>
   );
