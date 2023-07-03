@@ -12,23 +12,28 @@
     http-response-object "^3.0.1"
     parse-cache-control "^1.0.1"
 
-"@discord-player/equalizer@^0.2.1":
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/@discord-player/equalizer/-/equalizer-0.2.1.tgz#917934a47b09ef99893e967d6f3d69ee288e8547"
-  integrity sha512-PPjX8TBwzM85YKEdpYYL8aGbdSLIk9RK1h/uU5jeyiF6Uu5CiLH/XctDfcGW8cSgoaU4J0R6a8svCs9yhzHXSw==
+"@discord-player/equalizer@^0.2.2":
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/@discord-player/equalizer/-/equalizer-0.2.2.tgz#94c6309c62517da591c9cdc0a776d80b5aa523cf"
+  integrity sha512-U86em1cMtopXVuKFDxP8J2DcNOqwCAsYQ2tkzPoJvchsrezcI2cgvN3jtGt9FFECP3pLvSz96ZB9FOHZKG5Mqg==
 
-"@discord-player/extractor@^4.2.1":
-  version "4.2.1"
-  resolved "https://registry.yarnpkg.com/@discord-player/extractor/-/extractor-4.2.1.tgz#a25673b8ef594dbd78236d79889f62d884712c95"
-  integrity sha512-z1kqIyAteD5H22KE/VTuujdXq4D+lV9owv6SmpmoS1R/ss+skTCOe/jReHlQC2HBNo5flShgEzMDqtp/HxI7cA==
+"@discord-player/extractor@^4.3.1":
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/@discord-player/extractor/-/extractor-4.3.1.tgz#0d179e4ae21fe2a59610b374341a268603497d68"
+  integrity sha512-f8EwbQkplZQdVb4pCazc+5zo57y4gkPCl4Zq+3nHhwD+lz03OSmFGfoU6Ho9InBbx6S6PthO6CSPyFXN3sH6nw==
   dependencies:
     file-type "^16.5.4"
-    genius-lyrics "^4.4.2"
+    genius-lyrics "^4.4.3"
     node-html-parser "^6.1.4"
     reverbnation-scraper "^2.0.0"
-    soundcloud-scraper "^5.0.3"
-    spotify-url-info "^3.2.3"
+    soundcloud.ts "^0.5.0"
+    spotify-url-info "^3.2.5"
     youtube-sr "^4.3.4"
+
+"@discord-player/ffmpeg@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@discord-player/ffmpeg/-/ffmpeg-0.1.0.tgz#3c8f1fc7dfdb033dc8ecd18a9e82fde2a3867196"
+  integrity sha512-0kW6q4gMQN2B4Z4EzmUgXrKQSXXmyhjdZBBZ/6jSHZ9fh814oOu+JXP01VvtWHwTylI7qJHIctEWtSyjEubCJg==
 
 "@discord-player/utils@^0.2.1":
   version "0.2.1"
@@ -120,14 +125,14 @@
     tslib "^2.5.0"
     ws "^8.13.0"
 
-"@discordjs/ws@^0.8.2":
-  version "0.8.2"
-  resolved "https://registry.yarnpkg.com/@discordjs/ws/-/ws-0.8.2.tgz#e76f013fe69e41641e9c4d9f0514763048f691d0"
-  integrity sha512-av2yboE9VrBn0xyObiMMCrBbls+ucjjR3MNI5hc78hdNnYLoZQuvEVLGN8h/I+W1Vr08WATxke69RXsNZS5FBQ==
+"@discordjs/ws@^0.8.3":
+  version "0.8.3"
+  resolved "https://registry.yarnpkg.com/@discordjs/ws/-/ws-0.8.3.tgz#77db8d563b731a2198c1b40f63b1ef8d230504f7"
+  integrity sha512-hcYtppanjHecbdNyCKQNH2I4RP9UrphDgmRgLYrATEQF1oo4sYSve7ZmGsBEXSzH72MO2tBPdWSThunbxUVk0g==
   dependencies:
     "@discordjs/collection" "^1.5.1"
     "@discordjs/rest" "^1.7.1"
-    "@discordjs/util" "^0.3.0"
+    "@discordjs/util" "^0.3.1"
     "@sapphire/async-queue" "^1.5.0"
     "@types/ws" "^8.5.4"
     "@vladfrangu/async_event_emitter" "^2.2.1"
@@ -257,7 +262,7 @@ cheerio-select@^2.1.0:
     domhandler "^5.0.3"
     domutils "^3.0.1"
 
-cheerio@^1.0.0-rc.10, cheerio@^1.0.0-rc.9:
+cheerio@^1.0.0-rc.9:
   version "1.0.0-rc.12"
   resolved "https://registry.yarnpkg.com/cheerio/-/cheerio-1.0.0-rc.12.tgz#788bf7466506b1c6bf5fae51d24a2c4d62e47683"
   integrity sha512-VqR8m68vM46BNnuZ5NtnGBKIE/DfN0cRIzg9n40EIq9NOv90ayxLBXA8fXC5gquFRGJSTRqBq25Jt2ECLR431Q==
@@ -343,27 +348,28 @@ discord-api-types@^0.37.41:
   resolved "https://registry.yarnpkg.com/discord-api-types/-/discord-api-types-0.37.41.tgz#b2719aa25ba6c5794d08524742ab008224b03710"
   integrity sha512-FaPGBK9hx3zqSRX1x3KQWj+OElAJKmcyyfcdCy+U4AKv+gYuIkRySM7zd1So2sE4gc1DikkghkSBgBgKh6pe4Q==
 
-discord-player@^6.3.0:
-  version "6.3.0"
-  resolved "https://registry.yarnpkg.com/discord-player/-/discord-player-6.3.0.tgz#84e685cbb20e71e1c3536e964e8502fa26392e4d"
-  integrity sha512-+YA/ZsAOEMfZIWa2Xezcf9x1rIH9IP3Ak0uAt8e9x9Esv63v+hEtWgjeIgThxK+i5XgjUVQpPP2coesHA6MeUw==
+discord-player@^6.6.0:
+  version "6.6.0"
+  resolved "https://registry.yarnpkg.com/discord-player/-/discord-player-6.6.0.tgz#3ecb01e5d263ee1d9e188829cf0dd5f40f3a89b8"
+  integrity sha512-lW5IcGLycJK6mNtpz5/QqKuhhpBVm475xlsVKEUhoS1CFNcLqob5nAlEXurKjlIhxR+fFglSZ8jmtdFjR8p50g==
   dependencies:
-    "@discord-player/equalizer" "^0.2.1"
+    "@discord-player/equalizer" "^0.2.2"
+    "@discord-player/ffmpeg" "^0.1.0"
     "@discord-player/utils" "^0.2.1"
     "@discordjs/voice" latest
     libsodium-wrappers "^0.7.10"
 
-discord.js@^14.10.2:
-  version "14.10.2"
-  resolved "https://registry.yarnpkg.com/discord.js/-/discord.js-14.10.2.tgz#0cc7eec422ab1589e1fdaf57fcb14cd063324610"
-  integrity sha512-yPMJ/vGSWJP8WbbfPX18WGU2wOLBjL+OKVOVKI1eWx3ICcUhDg5MvFkg5aNGiokjPfKlAgqnFIUH0jl59ONHrQ==
+discord.js@^14.11.0:
+  version "14.11.0"
+  resolved "https://registry.yarnpkg.com/discord.js/-/discord.js-14.11.0.tgz#6529d49f30d10fc5a9ff8e6796661aa998769afe"
+  integrity sha512-CkueWYFQ28U38YPR8HgsBR/QT35oPpMbEsTNM30Fs8loBIhnA4s70AwQEoy6JvLcpWWJO7GY0y2BUzZmuBMepQ==
   dependencies:
     "@discordjs/builders" "^1.6.3"
     "@discordjs/collection" "^1.5.1"
     "@discordjs/formatters" "^0.3.1"
     "@discordjs/rest" "^1.7.1"
     "@discordjs/util" "^0.3.1"
-    "@discordjs/ws" "^0.8.2"
+    "@discordjs/ws" "^0.8.3"
     "@sapphire/snowflake" "^3.4.2"
     "@types/ws" "^8.5.4"
     discord-api-types "^0.37.41"
@@ -403,10 +409,10 @@ domutils@^3.0.1:
     domelementtype "^2.3.0"
     domhandler "^5.0.3"
 
-dotenv@^16.0.3:
-  version "16.0.3"
-  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-16.0.3.tgz#115aec42bac5053db3c456db30cc243a5a836a07"
-  integrity sha512-7GO6HghkA5fYG9TYnNxi14/7K9f5occMlp3zXAuSxn7CKCxt9xbNWG7yF8hTCSUchlfWSe3uLmlPfigevRItzQ==
+dotenv@^16.3.1:
+  version "16.3.1"
+  resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-16.3.1.tgz#369034de7d7e5b120972693352a3bf112172cc3e"
+  integrity sha512-IPzF4w4/Rd94bA9imS68tZBaYyBWSCE47V1RGuMrB94iyTOIEwRmVL2x/4An+6mETpLrKJ5hQkB8W4kFAadeIQ==
 
 emoji-regex@^8.0.0:
   version "8.0.0"
@@ -490,7 +496,7 @@ gauge@^3.0.0:
     strip-ansi "^6.0.1"
     wide-align "^1.1.2"
 
-genius-lyrics@^4.4.2:
+genius-lyrics@^4.4.3:
   version "4.4.3"
   resolved "https://registry.yarnpkg.com/genius-lyrics/-/genius-lyrics-4.4.3.tgz#0b7e461d61a3bb058fdc238532d0875ab0d9c6f4"
   integrity sha512-06L8GUg49FrUYEmSQvrSH74RH5S+qyerHwBpvk8vZLwWgpEw4mIWZDob5IpXT1ryhqazM9K6CXGNucKYPO8kng==
@@ -520,10 +526,10 @@ he@1.2.0:
   resolved "https://registry.yarnpkg.com/he/-/he-1.2.0.tgz#84ae65fa7eafb165fddb61566ae14baf05664f0f"
   integrity sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw==
 
-helmet@^6.1.5:
-  version "6.1.5"
-  resolved "https://registry.yarnpkg.com/helmet/-/helmet-6.1.5.tgz#2153387f6d73cce6efdfd85d3a65417cfb7db80c"
-  integrity sha512-UgAvdoG0BhF9vcCh/j0bWtElo2ZHHk6OzC98NLCM6zK03DEVSM0vUAtT7iR+oTo2Mi6sGelAH3tL6B/uUWxV4g==
+helmet@^7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/helmet/-/helmet-7.0.0.tgz#ac3011ba82fa2467f58075afa58a49427ba6212d"
+  integrity sha512-MsIgYmdBh460ZZ8cJC81q4XJknjG567wzEmv46WOBblDb6TUd3z8/GhgmsM9pn8g2B80tAJ4m5/d3Bi1KrSUBQ==
 
 himalaya@~1.1.0:
   version "1.1.0"
@@ -607,7 +613,7 @@ lru-cache@^6.0.0:
   dependencies:
     yallist "^4.0.0"
 
-m3u8stream@^0.8.4, m3u8stream@^0.8.6:
+m3u8stream@^0.8.6:
   version "0.8.6"
   resolved "https://registry.yarnpkg.com/m3u8stream/-/m3u8stream-0.8.6.tgz#0d6de4ce8ee69731734e6b616e7b05dd9d9a55b1"
   integrity sha512-LZj8kIVf9KCphiHmH7sbFQTVe4tOemb202fWwvJwR9W5ENW/1hxJN6ksAWGhQgSBSa3jyWhnjKU1Fw1GaOdbyA==
@@ -669,7 +675,7 @@ node-addon-api@^5.0.0:
   resolved "https://registry.yarnpkg.com/node-addon-api/-/node-addon-api-5.1.0.tgz#49da1ca055e109a23d537e9de43c09cca21eb762"
   integrity sha512-eh0GgfEkpnoWDq+VY8OyvYhFEzBk6jIYbRKdIlyTiAXIVJ8PyBaKb0rp7oDtoddbdoHWhq8wwr+XZ81F1rpNdA==
 
-node-fetch@^2.6.0, node-fetch@^2.6.1, node-fetch@^2.6.7:
+node-fetch@^2.6.0, node-fetch@^2.6.7:
   version "2.6.9"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.9.tgz#7c7f744b5cc6eb5fd404e0c7a9fec630a55657e6"
   integrity sha512-DJm/CJkZkRjKKj4Zi4BsKVZh3ValV5IR5s7LVZnW+6YMh0W1BfNA8XSs6DLMGYlId5F3KnA70uu2qepcR08Qqg==
@@ -827,24 +833,22 @@ signal-exit@^3.0.0:
   resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-3.0.7.tgz#a9a1767f8af84155114eaabd73f99273c8f59ad9"
   integrity sha512-wnD2ZE+l+SPC/uoS0vXeE9L1+0wuaMqKlfz9AMUo38JsyLSBWSFcHR1Rri62LZc12vLr1gb3jl7iwQhgwpAbGQ==
 
-soundcloud-scraper@^5.0.3:
-  version "5.0.3"
-  resolved "https://registry.yarnpkg.com/soundcloud-scraper/-/soundcloud-scraper-5.0.3.tgz#90c45f13353a2c88749d3dcabef9100fda2f56ba"
-  integrity sha512-AmS9KmK7mMaPVzHzBk40rANpAttZila3+iAet6EA47EeiTBUzVwjq4B+1LCOLtgPmzDSGk0qn+LZOEd5UhnZTQ==
+soundcloud.ts@^0.5.0:
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/soundcloud.ts/-/soundcloud.ts-0.5.1.tgz#8664eb58a511e4ca7cee13e454d46e70f82fd0ae"
+  integrity sha512-SLNVnUVqnMosC3lybgBuILEvS7fGVlNZDp2CZ1sH3jAOdKAte7gdxfsXN/PKPLZqh+fWv877boz6d6BfLC3Ctw==
   dependencies:
-    cheerio "^1.0.0-rc.10"
-    m3u8stream "^0.8.4"
-    node-fetch "^2.6.1"
+    undici "^5.22.1"
 
 spotify-uri@~3.0.3:
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/spotify-uri/-/spotify-uri-3.0.3.tgz#d09ae7e013f12fe2c22eed06cda2463be220597b"
   integrity sha512-mMstJ4dAMki6GbUjg94kp/h9ZH+7T7+ro/KUC00WVh+WKoLgMRrTKLkWMIwCZNO53Xa8DRHQw/6jwYtRZrVI3g==
 
-spotify-url-info@^3.2.3:
-  version "3.2.3"
-  resolved "https://registry.yarnpkg.com/spotify-url-info/-/spotify-url-info-3.2.3.tgz#915b8e07d5d12a4527df7e4be5f01023d19f2bc3"
-  integrity sha512-h7LCEM86kE68uWWAW0+NbKP+33qPC00SsbdJXzvmzNc18aIA/NukTi8gKZKEwHBENusLX0VRsHfIhyKDg7Fong==
+spotify-url-info@^3.2.5:
+  version "3.2.5"
+  resolved "https://registry.yarnpkg.com/spotify-url-info/-/spotify-url-info-3.2.5.tgz#96396702aca6a937d614197fb2bc6f4e2a54821d"
+  integrity sha512-5LpA8PznECfTPRVcgYSyYOn7dr3aq+sHgl3JrDDKT7NVJ8exEhFD1NsmR8/kObc6qlr0H6t+AZDVVfv3HiEKaQ==
   dependencies:
     himalaya "~1.1.0"
     spotify-uri "~3.0.3"
@@ -945,6 +949,13 @@ undici@^5.22.0, undici@^5.8.2:
   version "5.22.0"
   resolved "https://registry.yarnpkg.com/undici/-/undici-5.22.0.tgz#5e205d82a5aecc003fc4388ccd3d2c6e8674a0ad"
   integrity sha512-fR9RXCc+6Dxav4P9VV/sp5w3eFiSdOjJYsbtWfd4s5L5C4ogyuVpdKIVHeW0vV1MloM65/f7W45nR9ZxwVdyiA==
+  dependencies:
+    busboy "^1.6.0"
+
+undici@^5.22.1:
+  version "5.22.1"
+  resolved "https://registry.yarnpkg.com/undici/-/undici-5.22.1.tgz#877d512effef2ac8be65e695f3586922e1a57d7b"
+  integrity sha512-Ji2IJhFXZY0x/0tVBXeQwgPlLWw13GVzpsWPQ3rV50IFMMof2I55PZZxtm4P6iNq+L5znYN9nSTAq0ZyE6lSJw==
   dependencies:
     busboy "^1.6.0"
 
